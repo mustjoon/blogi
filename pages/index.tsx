@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Set ip address and let's get started</h1>
+        <h1 className={styles.title}>Enter the IP-address to start </h1>
         <NmapForm />
       </main>
 

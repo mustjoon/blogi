@@ -12,7 +12,6 @@ export const Input: FunctionComponent = (props: any) => {
           <div className={isSubmitting ? styles.submitting : ''}>
             <ChakraInput focusBorderColor="brand.400" type="text" placeholder={props.placeholder} {...field} />
             {meta.touched && meta.error && <div className="error">{meta.error}</div>}
-            {JSON.stringify(isSubmitting)}
           </div>
         )}
       </Field>
