@@ -4,6 +4,9 @@
   "paths": {
     "@babel/traverse": [
       "node_modules/@types/babel__traverse"
+    ],
+    "lodash": [
+      "node_modules/lodash"
     ]
   },
   "target": "es5",
