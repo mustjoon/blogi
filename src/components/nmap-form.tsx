@@ -1,28 +1,41 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import { FunctionComponent } from 'react';
 import * as Yup from 'yup';
-import { Input, Button } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import InputField from './form-input';
-
+import { getNmap } from 'src/slices/nmap';
 import styles from 'styles/nmap-form.module.scss';
-import { format } from 'prettier';
+import { RootState } from 'src/root-reducer';
 
+export interface NmapFormParams {
+  ip: string;
+}
 export const validationSchema = Yup.object().shape({
-  'ip-address': Yup.string().required(),
+  ip: Yup.string().required(),
 });
 
+const initialValues = { ip: '' };
+
 export const NmapForm: FunctionComponent = () => {
+  const dispatch = useDispatch();
+  const lines = useSelector((state: RootState) => state.nmap.lines);
+
+  const _onSubmit = async (values: NmapFormParams): Promise<void> => {
+    dispatch(getNmap(values));
+  };
+
   return (
     <div className={styles.container}>
-      <Formik
-        initialValues={{ 'ip-address': '' }}
+      {lines.length > 0 && lines.map((line) => <div key={line.message}>{line.message}</div>)}
+      <Formik<NmapFormParams>
+        initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          console.log(values);
-          console.log('mitä vittua');
-          console.log('perkele ');
+          await _onSubmit(values);
+          resetForm();
           setSubmitting(false);
         }}
       >
@@ -37,7 +50,7 @@ export const NmapForm: FunctionComponent = () => {
           /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
-            <InputField name="ip-address" placeholder="IP-address" />
+            <InputField name="ip" placeholder="IP-address" />
             <Button colorScheme={'brand'} type="submit" disabled={isSubmitting}>
               Start
             </Button>
