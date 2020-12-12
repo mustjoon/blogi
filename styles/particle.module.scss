@@ -1,3 +1,6 @@
 .particle {
+   margin: 50px 20px;
+   @media (min-width: 600px) {
    margin: 100px 200px;
+   }
 }
