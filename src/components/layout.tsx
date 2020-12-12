@@ -48,7 +48,7 @@ const temp = {
   retina_detect: true,
 };
 
-export const Layout: FunctionComponent = ({ children }) => {
+export const Layout: FunctionComponent<any> = ({ children }: any) => {
   return (
     <div className={particle.particle}>
       <Particles params={config as any} />

@@ -4,7 +4,7 @@ import { FunctionComponent } from 'react';
 
 import styles from 'styles/input.module.scss';
 
-export const Input: FunctionComponent = (props: any) => {
+export const Input: FunctionComponent<any> = (props: any) => {
   return (
     <div className={styles.input_container}>
       <Field name={props.name}>
