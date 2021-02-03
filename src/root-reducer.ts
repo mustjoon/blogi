@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import movie from './slices/movie';
+import blog from './slices/blog';
 import nmap from './slices/nmap';
 
-const rootReducer = combineReducers({ movie, nmap });
+const rootReducer = combineReducers({ blog, nmap });
 
 export type RootState = ReturnType<typeof rootReducer>;
 
