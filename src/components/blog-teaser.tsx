@@ -21,9 +21,7 @@ export const BlogTeaser: FunctionComponent<Props> = ({ blogPost }) => {
         <BlockTeaserContent>
           <h3>{title}</h3>
           <ContentContainer>
-            <ImageContainer>
-              <img src={hero.file.url} title={hero.title} />
-            </ImageContainer>
+            <ImageContainer>{hero && <img src={hero.file.url} title={hero.title} />}</ImageContainer>
 
             <TeaserContainer>{teaser}</TeaserContainer>
           </ContentContainer>

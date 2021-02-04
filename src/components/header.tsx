@@ -10,14 +10,6 @@ interface HeaderItem {
 
 const HEADER_ITEMS: HeaderItem[] = [
   {
-    text: 'Home',
-    link: '/',
-  },
-  {
-    text: 'CV',
-    link: '/',
-  },
-  {
     text: 'BLOG',
     link: '/blog',
   },
@@ -26,7 +18,7 @@ const HEADER_ITEMS: HeaderItem[] = [
 export const Header: FunctionComponent = () => (
   <HeaderContainer>
     <Nav>
-      <Container>
+      <Container maxW="90em">
         <ul>
           {HEADER_ITEMS.map((headerItem) => (
             <li key={headerItem.text}>

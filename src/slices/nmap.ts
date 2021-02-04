@@ -17,7 +17,6 @@ const nmapSlice = createSlice({
   initialState,
   reducers: {
     addMessage: (state, action: PayloadAction<Line>) => {
-      console.log(action);
       state.lines.push(action.payload);
     },
   },
@@ -27,12 +26,9 @@ export const { addMessage } = nmapSlice.actions;
 
 export const getNmap = ({ ip }: { ip: string }): AppThunk => async (dispatch) => {
   try {
-    console.log('mitä vittua', ip);
     const data = await NmapCalls.get({ ip });
     dispatch(addMessage(data));
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 export default nmapSlice.reducer;

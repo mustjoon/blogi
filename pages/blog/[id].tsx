@@ -27,7 +27,7 @@ export const BlogPost: FunctionComponent = () => {
 
   return (
     <BlockPostContainer maxW="90em">
-      <img src={currentEntity.hero.file.url} title={currentEntity.hero.title} />
+      {currentEntity.hero && <img src={currentEntity.hero?.file.url} title={currentEntity.hero.title} />}
       <h2>{currentEntity.title}</h2>
 
       <PostContent dangerouslySetInnerHTML={{ __html: mdToHtml(currentEntity.content) }} />

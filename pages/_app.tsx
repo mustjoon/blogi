@@ -4,15 +4,26 @@ import _Layout from 'src/components/layout';
 import { ChakraProvider } from '@chakra-ui/react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
-import { theme } from 'src/theme';
+import { theme, device } from 'src/theme';
 
 import '../styles/globals.scss';
 
 const GlobalStyle = createGlobalStyle`
 
+
+
   body {
-    font-size: 0.65vw;
+    font-size: 16px;
   }
+
+  @media ${device.laptopL} { 
+    body {
+      font-size: 0.75vw;
+    }
+  
+  }
+
+  
   body *{
     color: white;
     h2 {

@@ -63,7 +63,6 @@ const blogSlice = createSlice({
       state.loading = action.payload;
     },
     setActive: (state, action: PayloadAction<ActiveAction>) => {
-      console.log('SETTING ACTIVE...' + action.payload);
       state.activeId = action.payload;
     },
   },
@@ -72,7 +71,7 @@ const blogSlice = createSlice({
 export const { setBlogs, setLoading, setActive, setBlog } = blogSlice.actions;
 
 export const handleBlogItem = (item): BlogPost => {
-  return { ...item.fields, hero: item.fields.hero.fields, id: item.sys.id };
+  return { ...item.fields, hero: item.fields?.hero?.fields, id: item.sys.id };
 };
 
 export const handleBlogList = (data: BlogPostResponse): BlogPost[] => {
