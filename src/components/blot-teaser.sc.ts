@@ -5,6 +5,7 @@ export const ContentContainer = styled.div`
   flex-direction: row;
   > div {
     min-height: 50px;
+    width: 50%;
   }
 `;
 
@@ -18,7 +19,7 @@ export const BlockTeaserContainer = styled.div`
   border-radius: 5px;
   transition: all 0.1s ease-in-out;
   h3 {
-    margin-left: calc(50% + 15px);
+    margin-left: calc(50%);
   }
   &:hover {
     background: ${({ theme }) => darken(0.05, theme.colors.darkRed)};
