@@ -17,11 +17,11 @@ export const BlockPostContainer = styled(Container)`
   pre {
     background: ${({ theme }) => theme.colors.backgroundPrimary};
     padding: 10px;
-    margin: 10px 0;
+    margin: 50px 0;
     border-radius: 5px;
-    width: 150%;
-    margin-left: -25%;
-    overflow: hidden;
+    // width: 150%;
+    // margin-left: -25%;
+    overflow: auto;
   }
 
   hr {
@@ -32,11 +32,11 @@ export const BlockPostContainer = styled(Container)`
 
   img {
     width: 100%;
-    margin: 0 auto;
+    margin: 50px auto;
   }
 `;
 
 export const PostContent = styled.div`
-  max-width: 40em;
+  max-width: 70em;
   margin: 0 auto;
 `;

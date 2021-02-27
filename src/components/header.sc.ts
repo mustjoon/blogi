@@ -7,6 +7,7 @@ export const HeaderContainer = styled.div`
   left: 0;
   width: 100%;
   font-size: 1.2em;
+  z-index: 1000;
   ul {
     margin-top: 0;
     list-style: none;

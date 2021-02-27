@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
   @media ${device.laptopL} { 
     body {
-      font-size: 0.75vw;
+      font-size: 0.76vw;
     }
   
   }
