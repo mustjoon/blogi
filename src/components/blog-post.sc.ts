@@ -48,8 +48,6 @@ export const BlockPostContainer = styled(Container)`
 export const CheatSheetContainer = styled(Container)`
   ${SharedCss}
 
-  padding: 50px;
-
   h1,
   h2,
   h3 {

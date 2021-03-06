@@ -20,7 +20,7 @@ export const Movie: FunctionComponent = () => {
 
   return (
     <CheatSheetContainer maxW="90em">
-      <Grid templateColumns="repeat(2, 1fr)">
+      <Grid>
         {allIds.map((id) => (
           <PostContent key={id} dangerouslySetInnerHTML={{ __html: mdToHtml(byId[id].content) }} />
         ))}
