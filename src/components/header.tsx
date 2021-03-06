@@ -13,6 +13,10 @@ const HEADER_ITEMS: HeaderItem[] = [
     text: 'BLOG',
     link: '/blog',
   },
+  {
+    text: 'CHEATSHEET',
+    link: '/cheatsheet',
+  },
 ];
 
 export const Header: FunctionComponent = () => (

@@ -1,7 +1,7 @@
 import { Container } from '@chakra-ui/react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const BlockPostContainer = styled(Container)`
+const SharedCss = css`
   && {
     padding-top: 0;
     padding-left: 0;
@@ -39,4 +39,32 @@ export const BlockPostContainer = styled(Container)`
 export const PostContent = styled.div`
   max-width: 70em;
   margin: 0 auto;
+`;
+
+export const BlockPostContainer = styled(Container)`
+  ${SharedCss}
+`;
+
+export const CheatSheetContainer = styled(Container)`
+  ${SharedCss}
+
+  padding: 50px;
+
+  h1,
+  h2,
+  h3 {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
 `;

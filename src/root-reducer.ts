@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import blog from './slices/blog';
-import nmap from './slices/nmap';
+import cheatsheet from './slices/cheatSheet';
 
-const rootReducer = combineReducers({ blog, nmap });
+const rootReducer = combineReducers({ blog, cheatsheet });
 
 export type RootState = ReturnType<typeof rootReducer>;
 
