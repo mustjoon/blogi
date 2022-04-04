@@ -6,6 +6,7 @@ export const Layout: FunctionComponent<any> = ({ children }: any) => {
   return (
     <LayoutContainer>
       <Header />
+      X
       <div>{children}</div>
     </LayoutContainer>
   );
