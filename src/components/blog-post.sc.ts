@@ -11,7 +11,7 @@ const SharedCss = css`
   }
 
   a {
-    color: ${({ theme }) => theme.colors.red};
+    color: ${({ theme }) => theme.colors.white};
   }
 
   pre {

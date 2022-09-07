@@ -20,10 +20,12 @@ export const BlogPost: FunctionComponent = () => {
   }, [id]);
 
   const currentEntity = useSelector((state: RootState) => state.blog.byId[state.blog.activeId]);
-
+  console.log(currentEntity);
   if (!currentEntity) {
     return null;
   }
+
+  console.log(currentEntity.content);
 
   return (
     <BlockPostContainer maxW="90em">

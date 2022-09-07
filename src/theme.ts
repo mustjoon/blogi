@@ -1,9 +1,10 @@
 export const theme = {
   colors: {
-    red: '#d9005b',
-    backgroundPrimary: '#341c3c',
-    backgroundSecondary: '#0f0f33',
-    darkRed: '#88244d',
+    red: '#1c0000',
+    backgroundPrimary: '#020001',
+    backgroundSecondary: '#1c0000',
+    darkRed: '#1c1a1b',
+    black: '#020001',
   },
   fonts: {
     menu: 16,
