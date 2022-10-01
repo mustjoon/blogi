@@ -3,9 +3,18 @@ import { darken } from 'polished';
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 30em) {
+    align-items: center;
+  }
   > div {
     min-height: 50px;
     width: 50%;
+
+    @media (max-width: 30em) {
+      font-size: 12px;
+      min-height: auto;
+    }
   }
 `;
 
@@ -20,6 +29,11 @@ export const BlockTeaserContainer = styled.div`
   transition: all 0.1s ease-in-out;
   h3 {
     margin-left: calc(50%);
+
+    @media (max-width: 30em) {
+      margin-left: 0;
+      font-size: 20px;
+    }
   }
   &:hover {
     background: ${({ theme }) => darken(0.05, theme.colors.darkRed)};
@@ -45,6 +59,10 @@ export const BlockTeaserContainer = styled.div`
     }
     ${ContentContainer} {
       flex-direction: row-reverse;
+      @media (max-width: 30em) {
+        flex-direction: row;
+      }
+      //
     }
   }
 

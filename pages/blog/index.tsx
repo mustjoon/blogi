@@ -21,7 +21,7 @@ export async function getStaticProps({ query }): Promise<any> {
 export const Movie: FunctionComponent<any> = ({ blogs }) => {
   return (
     <BlockListContainer maxW="90em">
-      <Grid templateColumns="repeat(2, 1fr)">
+      <Grid templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(2, 1fr)' }}>
         {blogs.map((blog) => (
           <BlogTeaser key={blog.id} blogPost={blog} />
         ))}
