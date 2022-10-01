@@ -1,5 +1,4 @@
 import client from './client';
-import { Line } from 'src/types/nmap';
 
 export class CallApi {
   get = async <T>(url: string): Promise<T> => {
@@ -11,8 +10,11 @@ export class CallApi {
 const CallApiInstance = new CallApi();
 export default CallApiInstance;
 
-export const NmapCalls = {
-  get: async ({ ip }: { ip: string }): Promise<Line> => {
-    return await CallApiInstance.get<Line>(`/api/nmap?ip-address=${ip}`);
+export const BlogCalls = {
+  getSingle: async ({ id }: { id: string }): Promise<any> => {
+    return await CallApiInstance.get<any>(`blog/${id}`);
+  },
+  getAll: async (): Promise<any> => {
+    return await CallApiInstance.get<any>(`blog`);
   },
 };

@@ -5,11 +5,30 @@ import { Container, Grid } from '@chakra-ui/react';
 import { CenterLoader } from 'src/components/center-loader';
 import { BlogTeaser } from 'src/components/blog-teaser';
 import { BlockListContainer } from 'src/components/blog-list.sc';
+import { BlogCalls } from 'src/api/call-api';
 
-export const Movie: FunctionComponent = () => {
-  const dispatch = useDispatch();
-  const { allIds, byId, loading } = useSelector((state) => state.blog);
+export async function getServerSideProps({ query }): Promise<any> {
+  const data = await BlogCalls.getAll();
 
+  return {
+    props: {
+      blogs: data,
+    },
+  };
+}
+
+export const Movie: FunctionComponent<any> = ({ blogs }) => {
+  return (
+    <BlockListContainer maxW="90em">
+      <Grid templateColumns="repeat(2, 1fr)">
+        {blogs.map((blog) => (
+          <BlogTeaser key={blog.id} blogPost={blog} />
+        ))}
+      </Grid>
+    </BlockListContainer>
+  );
+
+  /*
   useEffect(() => {
     dispatch(getBlogList());
   }, []);
@@ -17,7 +36,8 @@ export const Movie: FunctionComponent = () => {
   if (loading) {
     return <CenterLoader />;
   }
-
+  
+ 
   return (
     <BlockListContainer maxW="90em">
       <Grid templateColumns="repeat(2, 1fr)">
@@ -27,6 +47,7 @@ export const Movie: FunctionComponent = () => {
       </Grid>
     </BlockListContainer>
   );
+  */
 };
 
 export default Movie;

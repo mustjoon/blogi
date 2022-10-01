@@ -81,10 +81,9 @@ export const handleBlogList = (data: BlogPostResponse): BlogPost[] => {
 export const getBlogList = (): AppThunk => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const data = await client.getEntries({ content_type: 'blogPost' });
+    const data = ((await client.getEntries({ content_type: 'blogPost' })) as unknown) as BlogPost[];
 
-    const handledData = handleBlogList(data);
-    dispatch(setBlogs({ items: handledData }));
+    dispatch(setBlogs({ items: data }));
   } catch (err) {
   } finally {
     dispatch(setLoading(false));
@@ -94,10 +93,9 @@ export const getBlogList = (): AppThunk => async (dispatch) => {
 export const getSingleBlog = (id: string): AppThunk => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const data = await client.getEntry(id);
+    const data = ((await client.getEntry(id)) as unknown) as BlogPost;
 
-    const blogItem = handleBlogItem(data);
-    dispatch(setBlog(blogItem));
+    dispatch(setBlog(data));
   } catch (err) {
   } finally {
     dispatch(setLoading(false));
