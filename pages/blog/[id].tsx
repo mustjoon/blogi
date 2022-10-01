@@ -21,10 +21,10 @@ export async function getStaticPaths(): Promise<any> {
   };
 }
 
-export async function getStaticProps({ query }): Promise<any> {
+export async function getStaticProps({ params: { id } }): Promise<any> {
   let data = null;
   try {
-    data = await BlogCalls.getSingle({ id: query?.id });
+    data = await BlogCalls.getSingle({ id });
   } catch (err) {
     console.log('Failed to fetch single blog');
   }
