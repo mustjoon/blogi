@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const Logo = styled.a`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-right: 40px;
+  font-weight: bold;
+  cursor: pointer;
+`;
+
 export const HeaderContainer = styled.div`
   background: ${({ theme }) => theme.colors.red};
   position: sticky;
@@ -8,6 +18,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   font-size: 1.2em;
   z-index: 1000;
+  font-weight: bold;
 
   .nav-container {
     display: flex;

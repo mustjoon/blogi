@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Nav, HeaderContainer } from './header.sc';
+import { Nav, HeaderContainer, Logo } from './header.sc';
 import { Container } from '@chakra-ui/react';
 import Link from 'next/link';
 
@@ -10,11 +10,11 @@ interface HeaderItem {
 
 const HEADER_ITEMS: HeaderItem[] = [
   {
-    text: 'BLOG',
+    text: 'Blog',
     link: '/blog',
   },
   {
-    text: 'CHEATSHEET',
+    text: 'Cheatsheet',
     link: '/cheatsheet',
   },
 ];
@@ -25,7 +25,10 @@ export const Header: FunctionComponent = () => (
       <Container maxW="90em">
         <div className="nav-container">
           <Link href="/">
-            <img className="logo" src="/kali-linux.png" />
+            <Logo>
+              <img className="logo" src="/ghoster.png" />
+              <span>ZOLABOO</span>
+            </Logo>
           </Link>
 
           <ul>
