@@ -12,7 +12,7 @@ export const ContentContainer = styled.div`
     width: 50%;
 
     @media (max-width: 30em) {
-      font-size: 12px;
+      font-size: 14px;
       min-height: auto;
     }
   }
@@ -29,6 +29,7 @@ export const BlockTeaserContainer = styled.div`
   transition: all 0.1s ease-in-out;
   h3 {
     margin-left: calc(50%);
+    font-weight: bold;
 
     @media (max-width: 30em) {
       margin-left: 0;
