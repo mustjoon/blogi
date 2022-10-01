@@ -8,13 +8,14 @@ import { setActive, getSingleBlog } from 'src/slices/blog';
 import { BlockPostContainer, PostContent } from 'src/components/blog-post.sc';
 import { BlogCalls } from 'src/api/call-api';
 
-export async function getServerSideProps({ query }): Promise<any> {
+export async function getStaticProps({ query }): Promise<any> {
   const data = await BlogCalls.getSingle({ id: query?.id });
 
   return {
     props: {
       blog: data,
     },
+    revalidate: 120,
   };
 }
 

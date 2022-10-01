@@ -7,13 +7,14 @@ import { BlogTeaser } from 'src/components/blog-teaser';
 import { BlockListContainer } from 'src/components/blog-list.sc';
 import { BlogCalls } from 'src/api/call-api';
 
-export async function getServerSideProps({ query }): Promise<any> {
+export async function getStaticProps({ query }): Promise<any> {
   const data = await BlogCalls.getAll();
 
   return {
     props: {
       blogs: data,
     },
+    revalidate: 120,
   };
 }
 
