@@ -8,8 +8,26 @@ import { setActive, getSingleBlog } from 'src/slices/blog';
 import { BlockPostContainer, PostContent } from 'src/components/blog-post.sc';
 import { BlogCalls } from 'src/api/call-api';
 
+export async function getStaticPaths(): Promise<any> {
+  const blogs = await BlogCalls.getAll();
+  const paths = blogs.map(({ id }) => {
+    return {
+      params: { id },
+    };
+  });
+  return {
+    paths,
+    fallback: false, // can also be true or 'blocking'
+  };
+}
+
 export async function getStaticProps({ query }): Promise<any> {
-  const data = await BlogCalls.getSingle({ id: query?.id });
+  let data = null;
+  try {
+    data = await BlogCalls.getSingle({ id: query?.id });
+  } catch (err) {
+    console.log('Failed to fetch single blog');
+  }
 
   return {
     props: {
