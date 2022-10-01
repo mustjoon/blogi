@@ -36,6 +36,10 @@ export const HeaderContainer = styled.div`
     list-style: none;
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 30em) {
+      display: none;
+    }
     li {
       padding: 20px;
     }

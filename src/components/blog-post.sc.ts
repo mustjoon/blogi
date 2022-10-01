@@ -39,6 +39,10 @@ const SharedCss = css`
 export const PostContent = styled.div`
   max-width: 70em;
   margin: 0 auto;
+
+  @media (max-width: 30em) {
+    padding: 20px 15px;
+  }
 `;
 
 export const BlockPostContainer = styled(Container)`
