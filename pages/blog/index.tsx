@@ -6,6 +6,7 @@ import { CenterLoader } from 'src/components/center-loader';
 import { BlogTeaser } from 'src/components/blog-teaser';
 import { BlockListContainer } from 'src/components/blog-list.sc';
 import { BlogCalls } from 'src/api/call-api';
+import { typeWriter } from 'src/utils/translator';
 
 export async function getStaticProps({ query }): Promise<any> {
   const data = await BlogCalls.getAll();
@@ -18,7 +19,10 @@ export async function getStaticProps({ query }): Promise<any> {
   };
 }
 
-export const Movie: FunctionComponent<any> = ({ blogs }) => {
+export const IndexPage: FunctionComponent<any> = ({ blogs }) => {
+  useEffect(() => {
+    typeWriter(1, 30);
+  }, []);
   return (
     <BlockListContainer maxW="90em">
       <Grid templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(2, 1fr)' }}>
@@ -28,27 +32,6 @@ export const Movie: FunctionComponent<any> = ({ blogs }) => {
       </Grid>
     </BlockListContainer>
   );
-
-  /*
-  useEffect(() => {
-    dispatch(getBlogList());
-  }, []);
-
-  if (loading) {
-    return <CenterLoader />;
-  }
-  
- 
-  return (
-    <BlockListContainer maxW="90em">
-      <Grid templateColumns="repeat(2, 1fr)">
-        {allIds.map((id) => (
-          <BlogTeaser key={id} blogPost={byId[id]} />
-        ))}
-      </Grid>
-    </BlockListContainer>
-  );
-  */
 };
 
-export default Movie;
+export default IndexPage;

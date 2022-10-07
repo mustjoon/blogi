@@ -7,6 +7,7 @@ import { RootState } from 'src/root-reducer';
 import { setActive, getSingleBlog } from 'src/slices/blog';
 import { BlockPostContainer, PostContent } from 'src/components/blog-post.sc';
 import { BlogCalls } from 'src/api/call-api';
+import { typeWriter } from 'src/utils/translator';
 
 export async function getStaticPaths(): Promise<any> {
   const blogs = await BlogCalls.getAll();
@@ -41,6 +42,10 @@ export const BlogPost: FunctionComponent<any> = ({ blog }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { id } = router.query;
+
+  useEffect(() => {
+    typeWriter(2, 20);
+  }, []);
 
   useEffect(() => {
     if (id) {
