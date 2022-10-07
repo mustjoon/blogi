@@ -4,9 +4,13 @@ const typeThis = (charsPerTime = 3, delay = 1, el, txt, i = 0) => {
   const length = txt.length;
   let chars = charsPerTime;
   if (length > 200) {
-    chars = 25;
+    // 25 iterations
+    chars = length / 25;
+    // hars = 25;
   }
-  console.log({ length });
+
+  chars = length / 35;
+  //  console.log({ length });
   if (i <= txt.length) {
     const newText = txt.slice(0, chars + i) + el.textContent.slice(i + chars, txt.length);
     el.textContent = newText;
