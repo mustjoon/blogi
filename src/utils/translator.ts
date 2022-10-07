@@ -1,12 +1,18 @@
 const ALPHABETH = 'ㄱㄴㄷㄹㅁㅂㅅㅐㅈㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣ';
 
 const typeThis = (charsPerTime = 3, delay = 1, el, txt, i = 0) => {
+  const length = txt.length;
+  let chars = charsPerTime;
+  if (length > 200) {
+    chars = 25;
+  }
+  console.log({ length });
   if (i <= txt.length) {
-    const newText = txt.slice(0, charsPerTime + i) + el.textContent.slice(i + charsPerTime, txt.length);
+    const newText = txt.slice(0, chars + i) + el.textContent.slice(i + chars, txt.length);
     el.textContent = newText;
-    i += charsPerTime;
+    i += chars;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    setTimeout(() => typeThis(charsPerTime, delay, el, txt, i), delay);
+    setTimeout(() => typeThis(chars, delay, el, txt, i), delay);
   }
 };
 
