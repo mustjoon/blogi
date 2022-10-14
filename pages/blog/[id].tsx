@@ -1,15 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
-import { FunctionComponent, useEffect } from 'react';
-import { resetBlog } from 'src/slices/blog';
-import { mdToHtml } from 'src/utils/md-to-html';
-import { RootState } from 'src/root-reducer';
-import { setActive, getSingleBlog } from 'src/slices/blog';
-import { BlockPostContainer, PostContent } from 'src/components/blog-post.sc';
-import { BlogCalls } from 'src/api/call-api';
-import { typeWriter } from 'src/utils/translator';
+import { FunctionComponent } from 'react';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
-export async function getStaticPaths(): Promise<any> {
+import { BlogCalls } from 'lib/api/call-api';
+import SingleBlog from 'components/single-blog/index';
+
+export const getStaticPaths: GetStaticPaths = async () => {
   const blogs = await BlogCalls.getAll();
   const paths = blogs.map(({ id }) => {
     return {
@@ -18,11 +13,16 @@ export async function getStaticPaths(): Promise<any> {
   });
   return {
     paths,
-    fallback: false, // can also be true or 'blocking'
+    fallback: 'blocking',
+  };
+};
+
+interface Params {
+  params: {
+    id: string;
   };
 }
-
-export async function getStaticProps({ params: { id } }): Promise<any> {
+export const getStaticProps: GetStaticProps = async ({ params: { id } }: Params) => {
   let data = null;
   try {
     data = await BlogCalls.getSingle({ id });
@@ -36,38 +36,7 @@ export async function getStaticProps({ params: { id } }): Promise<any> {
     },
     revalidate: 120,
   };
-}
-
-export const BlogPost: FunctionComponent<any> = ({ blog }) => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const { id } = router.query;
-
-  useEffect(() => {
-    typeWriter(2, 20);
-  }, []);
-
-  useEffect(() => {
-    if (id) {
-      // dispatch(getSingleBlog(id as string));
-      dispatch(setActive(id as string));
-    }
-  }, [id]);
-  const currentEntity = blog;
-  //const currentEntity = useSelector((state: RootState) => state.blog.byId[state.blog.activeId]);
-
-  if (!currentEntity) {
-    return null;
-  }
-
-  return (
-    <BlockPostContainer maxW="90em">
-      {currentEntity.hero && <img src={currentEntity.hero?.file.url} title={currentEntity.hero.title} />}
-      <h2>{currentEntity.title}</h2>
-
-      <PostContent dangerouslySetInnerHTML={{ __html: mdToHtml(currentEntity.content) }} />
-    </BlockPostContainer>
-  );
 };
 
-export default BlogPost;
+export const Page: FunctionComponent<any> = (props) => <SingleBlog {...props} />;
+export default Page;

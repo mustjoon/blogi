@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
-import { BlogPost } from 'src/slices/blog';
+import { BlogPost } from 'redux/slices/blog';
 import {
   BlockTeaserContainer,
   ImageContainer,

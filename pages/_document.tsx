@@ -1,8 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import Document from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(
+    ctx: any
+  ): Promise<{
+    styles: JSX.Element;
+    html: string;
+    head?: JSX.Element[];
+  }> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { client } from 'src/api/contentful-client';
-import { AppThunk } from 'src/store';
+import { client } from 'lib/api/contentful-client';
+import { AppThunk } from 'redux/store';
 
 const sliceName = 'blog';
 interface ById {
@@ -32,13 +32,11 @@ type BlogPosstParams = {
 
 type BlogPostResponse = any;
 
-type ActiveAction = string;
-
 const blogSlice = createSlice({
   name: sliceName,
   initialState,
   reducers: {
-    resetBlog: (state) => {
+    reset: (state) => {
       state.allIds = [];
       state.byId = {};
       state.totalEntities = 0;
@@ -46,7 +44,7 @@ const blogSlice = createSlice({
       state.loading = false;
       state.activeId = undefined;
     },
-    setBlogs: (state, action: PayloadAction<BlogPosstParams>) => {
+    set: (state, action: PayloadAction<BlogPosstParams>) => {
       const { items } = action.payload;
       state.allIds = [];
       state.byId = {};
@@ -55,53 +53,37 @@ const blogSlice = createSlice({
         state.byId[item.id] = item;
       });
     },
-    setBlog: (state, action: PayloadAction<BlogPost>) => {
+    setSingle: (state, action: PayloadAction<BlogPost>) => {
       state.allIds.push(action.payload.id);
       state.byId[action.payload.id] = action.payload;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
-    setActive: (state, action: PayloadAction<ActiveAction>) => {
-      state.activeId = action.payload;
-    },
   },
 });
 
-export const { setBlogs, setLoading, setActive, setBlog } = blogSlice.actions;
+export const { reset, set, setSingle, setLoading } = blogSlice.actions;
 
-export const handleBlogItem = (item): BlogPost => {
-  return { ...item.fields, hero: item.fields?.hero?.fields, id: item.sys.id };
+export const handleSingle = (item): BlogPost => {
+  return { ...item.fields, id: item.sys.id };
 };
 
-export const handleBlogList = (data: BlogPostResponse): BlogPost[] => {
-  return data.items.map(handleBlogItem);
+export const handleAll = (data: BlogPostResponse): BlogPost[] => {
+  return data.items.map(handleSingle);
 };
 
-export const getBlogList = (): AppThunk => async (dispatch) => {
+export const getAll = (): AppThunk => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const data = ((await client.getEntries({ content_type: 'blogPost' })) as unknown) as BlogPost[];
+    const data = await client.getEntries({ content_type: 'cheatsheet' });
 
-    dispatch(setBlogs({ items: data }));
+    const handledData = handleAll(data);
+    dispatch(set({ items: handledData }));
   } catch (err) {
   } finally {
     dispatch(setLoading(false));
   }
 };
-
-export const getSingleBlog = (id: string): AppThunk => async (dispatch) => {
-  try {
-    dispatch(setLoading(true));
-    const data = ((await client.getEntry(id)) as unknown) as BlogPost;
-
-    dispatch(setBlog(data));
-  } catch (err) {
-  } finally {
-    dispatch(setLoading(false));
-  }
-};
-
-export const { resetBlog } = blogSlice.actions;
 
 export default blogSlice.reducer;
