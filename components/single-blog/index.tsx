@@ -15,7 +15,7 @@ export const BlogPost: FunctionComponent<Props> = ({ blog }) => {
   const { id } = router.query;
 
   useEffect(() => {
-    typeWriter(2, 10);
+    // typeWriter(2, 10);
   }, []);
 
   useEffect(() => {
