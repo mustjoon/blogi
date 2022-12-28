@@ -4,6 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import { BlogApi } from 'lib/api/call-api';
 import SingleBlog from 'components/single-blog/index';
 
+/*
 export const getStaticPaths: GetStaticPaths = async () => {
   const blogs = await BlogApi.getAll();
   const paths = blogs.map(({ id }) => {
@@ -16,13 +17,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: 'blocking',
   };
 };
-
+*/
 interface Params {
   params: {
     id: string;
   };
 }
-export const getStaticProps: GetStaticProps = async ({ params: { id } }: Params) => {
+export const getServerSideProps: GetStaticProps = async ({ params: { id } }: Params) => {
   let data = null;
   try {
     data = await BlogApi.getSingle({ id });
@@ -34,7 +35,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { id } }: Params)
     props: {
       blog: data,
     },
-    revalidate: 120,
+    //  revalidate: 120,
   };
 };
 
