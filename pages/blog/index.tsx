@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'react';
-import { BlogCalls } from 'lib/api/call-api';
+import { BlogApi } from 'lib/api/call-api';
 import ListComponent from 'components/blog-list/index';
 import { GetStaticProps } from 'next';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await BlogCalls.getAll();
+  const data = await BlogApi.getAll();
 
   return {
     props: {

@@ -1,4 +1,13 @@
+import { handleSingle } from 'redux/slices/cheatSheet';
 import client from './client';
+
+const handleBlogItem = (item) => {
+  return { ...item.fields, hero: item.fields?.hero?.fields, id: item.sys.id };
+};
+
+const handleBlogList = (data) => {
+  return data.items.map(handleBlogItem);
+};
 
 export class CallApi {
   get = async <T>(url: string): Promise<T> => {
@@ -10,11 +19,13 @@ export class CallApi {
 const CallApiInstance = new CallApi();
 export default CallApiInstance;
 
-export const BlogCalls = {
+export const BlogApi = {
   getSingle: async ({ id }: { id: string }): Promise<any> => {
-    return await CallApiInstance.get<any>(`blog/${id}`);
+    const data = await CallApiInstance.get<any>(`blogs/${id}`);
+    return handleSingle(data);
   },
   getAll: async (): Promise<any> => {
-    return await CallApiInstance.get<any>(`blog`);
+    const data = await CallApiInstance.get<any>(`blogs`);
+    return handleBlogList(data);
   },
 };
