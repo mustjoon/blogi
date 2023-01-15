@@ -1,11 +1,11 @@
 import { handleSingle } from 'redux/slices/cheatSheet';
 import client from './client';
 
-const handleBlogItem = (item) => {
+export const handleBlogItem = (item) => {
   return { ...item.fields, hero: item.fields?.hero?.fields, id: item.sys.id };
 };
 
-const handleBlogList = (data) => {
+export const handleBlogList = (data) => {
   return data.items.map(handleBlogItem);
 };
 

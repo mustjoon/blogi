@@ -32,7 +32,7 @@ export const BlogPost: FunctionComponent<Props> = ({ blog }) => {
 
   return (
     <BlockPostContainer maxW="90em">
-      {hero && <img src={hero?.file?.url} title={hero.title} />}
+      {false && <img src={hero?.file?.url} title={hero.title} />}
       <h2>{blog.title}</h2>
 
       <PostContent dangerouslySetInnerHTML={{ __html: mdToHtml(content) }} />

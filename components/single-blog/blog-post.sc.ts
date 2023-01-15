@@ -12,6 +12,8 @@ const SharedCss = css`
 
   a {
     color: ${({ theme }) => theme.colors.white};
+    text-decoration: underline;
+    font-weight: bold;
   }
 
   pre {

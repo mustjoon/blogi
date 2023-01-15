@@ -1,16 +1,16 @@
 import { FunctionComponent } from 'react';
-import { BlogApi } from 'lib/api/call-api';
 import ListComponent from 'components/blog-list/index';
 import { GetStaticProps } from 'next';
+import { client } from 'lib/api/contentful-client';
+import { handleBlogList } from 'lib/api/call-api';
 
-export const getServerSideProps: GetStaticProps = async () => {
-  const data = await BlogApi.getAll();
-
+export const getStaticProps: GetStaticProps = async () => {
+  const data = handleBlogList(await client.getEntries({ content_type: 'blogPost' }));
   return {
     props: {
       blogs: data,
     },
-    //  revalidate: 120,
+    revalidate: 30,
   };
 };
 
