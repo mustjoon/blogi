@@ -6,7 +6,7 @@ import { client } from 'lib/api/contentful-client';
 import { handleBlogItem, handleBlogList } from 'lib/api/call-api';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blogs = handleBlogList(await client.getEntries({ content_type: 'blogPost' }));
+  const blogs = handleBlogList(await client.getEntries({ content_type: 'blogPost', order: 'sys.createdAt' }));
   const paths = blogs.map(({ id }) => {
     return {
       params: { id },

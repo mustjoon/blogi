@@ -5,7 +5,7 @@ import { client } from 'lib/api/contentful-client';
 import { handleBlogList } from 'lib/api/call-api';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = handleBlogList(await client.getEntries({ content_type: 'blogPost' }));
+  const data = handleBlogList(await client.getEntries({ content_type: 'blogPost', order: '-sys.createdAt' }));
   return {
     props: {
       blogs: data,

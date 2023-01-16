@@ -3,7 +3,7 @@
 import { client } from '../../../lib/api/contentful-client';
 
 export default async (req, res) => {
-  const data = await client.getEntries({ content_type: 'blogPost' });
+  const data = await client.getEntries({ content_type: 'blogPost', order: '-sys.createdAt' });
   res.statusCode = 200;
   res.json(data);
 };
