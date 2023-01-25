@@ -3,13 +3,17 @@ import { mdToHtml } from 'utils/md-to-html';
 import { BlockPostContainer } from 'components/single-blog/blog-post.sc';
 import { PostContent } from 'components/single-blog/blog-post.sc';
 import axios from 'axios';
-
+import Head from 'components/head';
 type Props = any;
 
 export const BlogPost: FunctionComponent<Props> = ({ blog, error, id }) => {
   const [post, setPost] = useState(blog);
   const [password, setPassword] = useState(null);
   const [submitError, setSubmitError] = useState(null);
+
+  // Use blog here so refetch doesnt trigger meta tags
+  const title = blog?.title || 'Restricted page';
+  const description = blog?.title ? `Solving ${title} ` : 'My CTF writeups and Cyber stuff';
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -29,6 +33,7 @@ export const BlogPost: FunctionComponent<Props> = ({ blog, error, id }) => {
   if (error?.code === 401 && !post) {
     return (
       <BlockPostContainer maxW="90em">
+        <Head title={title} description={description} />
         <h2>{error.message}</h2>
         <PostContent>
           <div style={{ textAlign: 'center' }}>
@@ -56,12 +61,15 @@ export const BlogPost: FunctionComponent<Props> = ({ blog, error, id }) => {
   const { hero, content } = post;
 
   return (
-    <BlockPostContainer maxW="90em">
-      {false && <img src={hero?.file?.url} title={hero.title} />}
-      <h2>{post.title}</h2>
+    <div>
+      <Head title={title} description={description} />
+      <BlockPostContainer maxW="90em">
+        {false && <img src={hero?.file?.url} title={hero.title} />}
+        <h2>{post.title}</h2>
 
-      <PostContent dangerouslySetInnerHTML={{ __html: mdToHtml(content) }} />
-    </BlockPostContainer>
+        <PostContent dangerouslySetInnerHTML={{ __html: mdToHtml(content) }} />
+      </BlockPostContainer>
+    </div>
   );
 };
 
