@@ -33,7 +33,6 @@ export const BlogPost: FunctionComponent<Props> = ({ blog, error, id }) => {
         <PostContent>
           <div style={{ textAlign: 'center' }}>
             <p>This post is password protected. Please enter the password to view the post.</p>
-            <p>Password functionality coming soon</p>
             {submitError && <p style={{ color: 'red' }}>{submitError}</p>}
             <form onSubmit={(e) => submitForm(e)}>
               <input
