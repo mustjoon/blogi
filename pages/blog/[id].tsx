@@ -2,11 +2,10 @@ import { FunctionComponent } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import SingleBlog from 'components/single-blog/index';
-import { client } from 'lib/api/contentful-client';
-import { handleBlogItem, handleBlogList } from 'lib/api/call-api';
+import { getBlogs, getBlog } from 'lib/api/blog-service';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blogs = handleBlogList(await client.getEntries({ content_type: 'blogPost', order: 'sys.createdAt' }));
+  const blogs = await getBlogs();
   const paths = blogs.map(({ id }) => {
     return {
       params: { id },
@@ -26,7 +25,7 @@ interface Params {
 export const getStaticProps: GetStaticProps = async ({ params: { id } }: Params) => {
   let data = null;
   try {
-    data = handleBlogItem(await client.getEntry(id));
+    data = await getBlog(id);
   } catch (err) {
     console.log('Failed to fetch single blog');
   }

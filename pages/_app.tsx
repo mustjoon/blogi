@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import { ReactElement } from 'react';
 import { Provider } from 'react-redux';
-import store from '../redux/store';
+
 import _Layout from 'components/layout/layout';
 import { ChakraProvider } from '@chakra-ui/react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
@@ -42,15 +42,13 @@ interface MyAppProps extends AppProps {
 export default function MyApp({ Component, pageProps }: MyAppProps): ReactElement {
   const Layout = Component.Layout ? Component.Layout : _Layout;
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <ChakraProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ChakraProvider>
-      </ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <ChakraProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
       <GlobalStyle />
-    </Provider>
+    </ThemeProvider>
   );
 }

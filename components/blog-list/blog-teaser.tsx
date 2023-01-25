@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
-import { BlogPost } from 'redux/slices/blog';
+
 import {
   BlockTeaserContainer,
   ImageContainer,
@@ -10,7 +10,7 @@ import {
 } from './blot-teaser.sc';
 
 interface Props {
-  blogPost: BlogPost;
+  blogPost: any;
 }
 
 export const BlogTeaser: FunctionComponent<Props> = ({ blogPost }) => {

@@ -3,27 +3,13 @@ import { useRouter } from 'next/router';
 import { FunctionComponent, useEffect } from 'react';
 import { mdToHtml } from 'utils/md-to-html';
 import { BlockPostContainer } from 'components/single-blog/blog-post.sc';
-import { setActive } from 'redux/slices/blog';
+
 import { PostContent } from 'components/single-blog/blog-post.sc';
 import { typeWriter } from 'utils/translator';
 
 type Props = any;
 
 export const BlogPost: FunctionComponent<Props> = ({ blog }) => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const { id } = router.query;
-
-  useEffect(() => {
-    // typeWriter(2, 10);
-  }, []);
-
-  useEffect(() => {
-    if (id) {
-      dispatch(setActive(id as string));
-    }
-  }, [id]);
-
   if (!blog) {
     return null;
   }

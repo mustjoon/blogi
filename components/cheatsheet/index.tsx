@@ -1,28 +1,14 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { FunctionComponent, useEffect } from 'react';
-import { getAll } from 'redux/slices/cheatSheet';
+import { FunctionComponent } from 'react';
 import { Grid } from '@chakra-ui/react';
-import { CenterLoader } from 'components/cheatsheet/center-loader';
 import { PostContent, CheatSheetContainer } from 'components/single-blog/blog-post.sc';
 import { mdToHtml } from 'utils/md-to-html';
 
-export const CheatSheet: FunctionComponent = () => {
-  const dispatch = useDispatch();
-  const { allIds, byId, loading } = useSelector((state) => state.cheatsheet);
-
-  useEffect(() => {
-    dispatch(getAll());
-  }, []);
-
-  if (loading) {
-    return <CenterLoader />;
-  }
-
+export const CheatSheet: FunctionComponent<any> = ({ cheatsheets }) => {
   return (
     <CheatSheetContainer maxW="90em">
       <Grid>
-        {allIds.map((id) => (
-          <PostContent key={id} dangerouslySetInnerHTML={{ __html: mdToHtml(byId[id].content) }} />
+        {cheatsheets.map((cheatsheet) => (
+          <PostContent key={cheatsheet.id} dangerouslySetInnerHTML={{ __html: mdToHtml(cheatsheet.content) }} />
         ))}
       </Grid>
     </CheatSheetContainer>
