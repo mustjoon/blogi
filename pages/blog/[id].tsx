@@ -6,11 +6,13 @@ import { getBlogs, getBlog } from 'lib/api/blog-service';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const blogs = await getBlogs();
-  const paths = blogs.map(({ id }) => {
-    return {
-      params: { id },
-    };
-  });
+  const paths = blogs
+    .filter(({ passwordProtected }) => !passwordProtected)
+    .map(({ id }) => {
+      return {
+        params: { id },
+      };
+    });
   return {
     paths,
     fallback: 'blocking',
@@ -24,15 +26,19 @@ interface Params {
 }
 export const getStaticProps: GetStaticProps = async ({ params: { id } }: Params) => {
   let data = null;
+  let error = null;
   try {
     data = await getBlog(id);
   } catch (err) {
+    error = err;
     console.log('Failed to fetch single blog');
   }
 
   return {
     props: {
       blog: data,
+      error,
+      id,
     },
     revalidate: 30,
   };

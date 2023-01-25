@@ -42,6 +42,23 @@ export const PostContent = styled.div`
   max-width: 70em;
   margin: 0 auto;
 
+  form {
+    color: black;
+    input {
+      margin: 20px 10px;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    button {
+      background: ${({ theme }) => theme.colors.black};
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }
+
   @media (max-width: 30em) {
     padding: 20px 15px;
   }
