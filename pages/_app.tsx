@@ -38,7 +38,7 @@ interface MyAppProps extends AppProps {
   Component: any;
 }
 
-export default function MyApp({ Component, pageProps }: MyAppProps): ReactElement {
+export default function MyApp({ Component, pageProps }: any): ReactElement {
   const Layout = Component.Layout ? Component.Layout : _Layout;
   return (
     <ThemeProvider theme={theme}>
