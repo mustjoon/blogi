@@ -24,24 +24,10 @@ export const BlogTeaser: FunctionComponent<Props> = ({ blogPost, isMobile }) => 
           <ContentContainer>
             <ImageContainer>
               {hero && !isMobile && (
-                <Image
-                  priority={true}
-                  width="200"
-                  height="200"
-                  alt="logo"
-                  src={'https:' + hero.file.url}
-                  title={hero.title}
-                />
+                <Image width="200" height="200" alt="logo" src={'https:' + hero.file.url} title={hero.title} />
               )}
               {hero && isMobile && (
-                <Image
-                  priority={true}
-                  width="200"
-                  height="200"
-                  alt="logo"
-                  src={'https:' + hero.file.url}
-                  title={hero.title}
-                />
+                <Image width="200" height="200" alt="logo" src={'https:' + hero.file.url} title={hero.title} />
               )}
             </ImageContainer>
 
