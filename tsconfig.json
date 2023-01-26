@@ -1,39 +1,40 @@
 {
   "compilerOptions": {
-  "baseUrl": ".",
-  "paths": {
-    "@babel/traverse": [
-      "node_modules/@types/babel__traverse"
+    "baseUrl": ".",
+    "paths": {
+      "@babel/traverse": [
+        "node_modules/@types/babel__traverse"
+      ],
+      "lodash": [
+        "node_modules/lodash"
+      ]
+    },
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "lodash": [
-      "node_modules/lodash"
-    ]
-  },
-  "target": "es5",
-  "lib": [
-  "dom",
-  "dom.iterable",
-  "esnext"
-  ],
-  "allowJs": true,
-  "skipLibCheck": true,
-  "strict": false,
-  "forceConsistentCasingInFileNames": true,
-  "noEmit": true,
-  "esModuleInterop": true,
-  "module": "esnext",
-  "moduleResolution": "node",
-  "resolveJsonModule": true,
-  "isolatedModules": true,
-  "jsx": "preserve"
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
   },
   "include": [
-  "next-env.d.ts",
-  "**/*.ts",
-  "**/*.tsx"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
-  "node_modules",
-  "babel__traverse"
+    "node_modules",
+    "babel__traverse"
   ]
-  }
+}

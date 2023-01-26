@@ -7,6 +7,7 @@ import Head from 'components/head';
 export const CheatSheet: FunctionComponent<any> = ({ cheatsheets }) => {
   const title = "Zolaboo's CheatSheet";
   const description = 'Misc cheatsheet for various stuff, please dont use this, its not intended to be good';
+
   return (
     <CheatSheetContainer maxW="90em">
       <Head title={title} description={description} />

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Logo = styled.a`
+export const Logo = styled.span`
   display: flex;
   flex-direction: row;
   align-items: center;
