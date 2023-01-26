@@ -7,6 +7,6 @@ export async function getServerSideProps({ query }): Promise<any> {
   };
 }
 
-export default function (): null {
+export default function Nuller(): null {
   return null;
 }

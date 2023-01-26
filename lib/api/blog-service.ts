@@ -66,17 +66,17 @@ export const handleBlogList = (data: BlogListResponse): StrippedBlog[] => {
 };
 
 export const getBlogs = async (): Promise<StrippedBlog[]> => {
-  const entries = ((await client.getEntries({
+  const entries = (await client.getEntries({
     content_type: 'blogPost',
     order: '-sys.createdAt',
-  })) as unknown) as BlogListResponse;
+  })) as unknown as BlogListResponse;
 
   const data = handleBlogList(entries);
   return data;
 };
 
 export const getBlog = async (id: string, password?: string): Promise<Blog> => {
-  const entry = ((await client.getEntry(id)) as unknown) as BlogResponse;
+  const entry = (await client.getEntry(id)) as unknown as BlogResponse;
   const entryPwd = entry.fields.password;
 
   if (entryPwd && password !== entryPwd) {
