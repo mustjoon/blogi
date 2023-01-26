@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app';
 import { ReactElement } from 'react';
-import { Provider } from 'react-redux';
 
 import _Layout from 'components/layout/layout';
 import { ChakraProvider } from '@chakra-ui/react';
