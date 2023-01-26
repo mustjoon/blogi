@@ -3,4 +3,7 @@ const path = require('path');
 
 module.exports = {
   trailingSlash: true,
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
 };

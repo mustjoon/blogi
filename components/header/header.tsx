@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { Nav, HeaderContainer, Logo } from './header.sc';
 import { Container } from '@chakra-ui/react';
 import Link from 'next/link';
-
+import Image from 'next/image';
 interface HeaderItem {
   text: string;
   link: string;
@@ -26,7 +26,7 @@ export const Header: FunctionComponent = () => (
         <div className="nav-container">
           <Link href="/">
             <Logo>
-              <img className="logo" src="/ghoster.png" />
+              <Image alt="" width={80} height={20} className="logo" src="/ghoster.png" />
               <span>ZOLABOO</span>
             </Logo>
           </Link>

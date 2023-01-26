@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
-
+import Image from 'next/image';
 import {
   BlockTeaserContainer,
   ImageContainer,
@@ -21,7 +21,18 @@ export const BlogTeaser: FunctionComponent<Props> = ({ blogPost }) => {
         <BlockTeaserContent>
           <h3>{title}</h3>
           <ContentContainer>
-            <ImageContainer>{hero && <img src={hero.file.url} title={hero.title} />}</ImageContainer>
+            <ImageContainer>
+              {hero && (
+                <Image
+                  priority={true}
+                  width="200"
+                  height="200"
+                  alt="logo"
+                  src={'https:' + hero.file.url}
+                  title={hero.title}
+                />
+              )}
+            </ImageContainer>
 
             <TeaserContainer>{teaser}</TeaserContainer>
           </ContentContainer>
