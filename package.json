@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix --ext .ts,.tsx .",
-    "test": "jest"
+    "test": "jest",
+    "now-build": "next build"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.4.1",
