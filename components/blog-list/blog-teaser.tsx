@@ -12,9 +12,10 @@ import {
 interface Props {
   blogPost: any;
   isMobile: boolean;
+  index: number;
 }
 
-export const BlogTeaser: FunctionComponent<Props> = ({ blogPost, isMobile }) => {
+export const BlogTeaser: FunctionComponent<Props> = ({ blogPost, isMobile, index }) => {
   const { title, hero, id, teaser } = blogPost;
   return (
     <Link href={`/blog/${id}`}>
@@ -24,10 +25,24 @@ export const BlogTeaser: FunctionComponent<Props> = ({ blogPost, isMobile }) => 
           <ContentContainer>
             <ImageContainer>
               {hero && !isMobile && (
-                <Image width="200" height="200" alt="logo" src={'https:' + hero.file.url} title={hero.title} />
+                <Image
+                  priority={index < 8}
+                  width="200"
+                  height="200"
+                  alt="logo"
+                  src={'https:' + hero.file.url}
+                  title={hero.title}
+                />
               )}
               {hero && isMobile && (
-                <Image width="200" height="200" alt="logo" src={'https:' + hero.file.url} title={hero.title} />
+                <Image
+                  priority={index < 4}
+                  width="200"
+                  height="200"
+                  alt="logo"
+                  src={'https:' + hero.file.url}
+                  title={hero.title}
+                />
               )}
             </ImageContainer>
 

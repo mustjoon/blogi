@@ -19,8 +19,8 @@ export const IndexPage: FunctionComponent<any> = ({ blogs }) => {
       <Head title={title} description={description} />
       <BlockListContainer maxW="90em">
         <Grid templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(2, 1fr)' }}>
-          {blogs.map((blog) => (
-            <BlogTeaser isMobile={isMobile} key={blog.id} blogPost={blog} />
+          {blogs.map((blog, index) => (
+            <BlogTeaser isMobile={isMobile} key={blog.id} blogPost={blog} index={index} />
           ))}
         </Grid>
       </BlockListContainer>
