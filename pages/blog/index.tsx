@@ -3,13 +3,13 @@ import ListComponent from 'components/blog-list/index';
 import { GetStaticProps } from 'next';
 import { getBlogs } from 'lib/api/blog-service';
 
-export const getServerSideProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = await getBlogs();
   return {
     props: {
       blogs: data,
     },
-    //  revalidate: 30,
+    revalidate: 30,
   };
 };
 

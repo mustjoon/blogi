@@ -5,6 +5,10 @@ export const ContentContainer = styled.div`
   flex-direction: row;
 
   @media (max-width: 30em) {
+    flex-direction: column;
+  }
+
+  @media (max-width: 30em) {
     align-items: center;
   }
   > div {
@@ -13,6 +17,7 @@ export const ContentContainer = styled.div`
 
     @media (max-width: 30em) {
       font-size: 14px;
+      width: 100%;
       min-height: auto;
     }
   }
@@ -59,9 +64,9 @@ export const BlockTeaserContainer = styled.div`
       margin-left: 0;
     }
     ${ContentContainer} {
-      flex-direction: row-reverse;
+      // flex-direction: row-reverse;
       @media (max-width: 30em) {
-        flex-direction: row;
+        flex-direction: column;
       }
       //
     }
@@ -75,8 +80,18 @@ export const BlockTeaserContainer = styled.div`
 export const ImageContainer = styled.div`
   position: relative;
   height: 100%;
-  width: 50%;
+
   margin: 5px;
+
+  width: 50%;
+
+  width: 200px !important;
+  height: 200px;
+
+  @media (max-width: 30em) {
+    width: 200px !important;
+    height: 200px;
+  }
 
   &::after {
     content: '';
@@ -89,6 +104,10 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    @media (max-width: 30em) {
+      position: relative;
+    }
   }
 `;
 

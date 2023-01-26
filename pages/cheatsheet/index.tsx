@@ -3,13 +3,13 @@ import CheatSheet from 'components/cheatsheet/index';
 import { GetStaticProps } from 'next';
 import { getAll } from 'lib/api/cheatsheet-service';
 
-export const getServerSideProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = await getAll();
   return {
     props: {
       cheatsheets: data,
     },
-    // revalidate: 30,
+    revalidate: 30,
   };
 };
 

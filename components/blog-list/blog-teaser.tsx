@@ -11,9 +11,10 @@ import {
 
 interface Props {
   blogPost: any;
+  isMobile: boolean;
 }
 
-export const BlogTeaser: FunctionComponent<Props> = ({ blogPost }) => {
+export const BlogTeaser: FunctionComponent<Props> = ({ blogPost, isMobile }) => {
   const { title, hero, id, teaser } = blogPost;
   return (
     <Link href={`/blog/${id}`}>
@@ -22,7 +23,17 @@ export const BlogTeaser: FunctionComponent<Props> = ({ blogPost }) => {
           <h3>{title}</h3>
           <ContentContainer>
             <ImageContainer>
-              {hero && (
+              {hero && !isMobile && (
+                <Image
+                  priority={true}
+                  width="200"
+                  height="200"
+                  alt="logo"
+                  src={'https:' + hero.file.url}
+                  title={hero.title}
+                />
+              )}
+              {hero && isMobile && (
                 <Image
                   priority={true}
                   width="200"
