@@ -41,7 +41,7 @@ const SharedCss = css`
 export const PostContent = styled.div`
   max-width: 70em;
   margin: 0 auto;
-  width: 100%;
+  width: 100vw;
 
   form {
     color: black;
