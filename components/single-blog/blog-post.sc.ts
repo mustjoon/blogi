@@ -41,6 +41,7 @@ const SharedCss = css`
 export const PostContent = styled.div`
   max-width: 70em;
   margin: 0 auto;
+  width: 100%;
 
   form {
     color: black;
@@ -73,19 +74,24 @@ export const CheatSheetContainer = styled(Container)`
 
   h1,
   h2,
-  h3 {
+  h3,h4,h5 {
     text-align: left;
     margin-left: 0;
+    text-transform: capitalize;
   }
 
   h1 {
-    font-size: 3em;
+    font-size: 4em;
   }
   h2 {
-    font-size: 2em;
+    font-size: 3.5em;
   }
 
   h3 {
-    font-size: 1em;
+    font-size: 2.5em;
+  }
+
+  h4 {
+    font-size: 1.5em;
   }
 `;
