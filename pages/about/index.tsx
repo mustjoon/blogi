@@ -28,7 +28,6 @@ export const IndexPage: FunctionComponent<any> = (props) => {
               maxWidth: '100%',
               minHeight: 200,
               position: 'relative',
-              marginBottom: '20px',
             }}
           >
             <img alt="" className="logo" src="/logo-second.jpeg" />
