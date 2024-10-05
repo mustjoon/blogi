@@ -28,6 +28,7 @@ export const Diaries: FunctionComponent<any> = ({ diaries }) => {
       <Grid>
         {diaries.map((cheatsheet) => (
           <div
+            key={cheatsheet.id}
             style={{
               maxWidth: '70em',
               margin: '0 auto',
@@ -38,7 +39,10 @@ export const Diaries: FunctionComponent<any> = ({ diaries }) => {
             }}
           >
             <h1 style={{ fontSize: '2.5em' }}>{cheatsheet.date}</h1>
-            <PostContent key={cheatsheet.id} dangerouslySetInnerHTML={{ __html: mdToHtml(cheatsheet.blogContent) }} />
+            <PostContent
+              key={cheatsheet.id + 'ASD'}
+              dangerouslySetInnerHTML={{ __html: mdToHtml(cheatsheet.blogContent) }}
+            />
           </div>
         ))}
       </Grid>
