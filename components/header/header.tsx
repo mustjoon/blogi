@@ -10,6 +10,10 @@ interface HeaderItem {
 
 const HEADER_ITEMS: HeaderItem[] = [
   {
+    text: 'About me',
+    link: '/about',
+  },
+  {
     text: 'Blog',
     link: '/blog',
   },
@@ -30,7 +34,7 @@ export const Header: FunctionComponent = () => (
         <div className="nav-container">
           <Link href="/">
             <Logo>
-              <Image alt="" width={80} height={20} className="logo" src="/ghoster.png" />
+              <Image alt="" width={80} height={20} className="logo" src="/logo-second.jpeg" />
               <span>ZOLABOO</span>
             </Logo>
           </Link>
