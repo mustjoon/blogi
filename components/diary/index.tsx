@@ -32,10 +32,11 @@ export const Diaries: FunctionComponent<any> = ({ diaries }) => {
             style={{
               maxWidth: '70em',
               margin: '0 auto',
-              backgroundColor: '#313233',
+              backgroundColor: 'rgb(11 14 16)',
               marginBottom: '20px',
               padding: '15px',
               marginTop: '20px',
+              borderRadius: '5px',
             }}
           >
             <h1 style={{ fontSize: '2.5em' }}>{cheatsheet.date}</h1>
