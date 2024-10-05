@@ -7,7 +7,6 @@ import Head from 'components/head';
 export const Diaries: FunctionComponent<any> = ({ diaries }) => {
   const title = 'Daily diary';
   const description = 'This is a collection of my daily adventures in cyber learning';
-  console.log({ diaries });
 
   return (
     <CheatSheetContainer maxW="90em">

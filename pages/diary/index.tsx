@@ -5,7 +5,7 @@ import { getDiaries } from 'lib/api/diary-service';
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getDiaries();
-  console.log({ data });
+
   return {
     props: {
       diaries: data,

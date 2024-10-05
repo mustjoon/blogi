@@ -48,7 +48,6 @@ export type CheatSheet = any;
 export type CheatSheetResponse = any;
 
 export const handleSingle = (item: CheatSheetResponse): CheatSheet => {
-  console.log('SINGLE', item);
   return { ...item.fields, id: item.sys.id };
 };
 
@@ -61,8 +60,6 @@ export const getDiaries = async (): Promise<StrippedBlog[]> => {
     content_type: 'cyberLearningDaily',
     order: '-sys.createdAt',
   })) as unknown as BlogListResponse;
-
-  console.log({ entries });
 
   const data = handleAll(entries);
   return data;
