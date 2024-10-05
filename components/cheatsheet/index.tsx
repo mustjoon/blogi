@@ -5,11 +5,24 @@ import { mdToHtml } from 'utils/md-to-html';
 import Head from 'components/head';
 
 export const CheatSheet: FunctionComponent<any> = ({ cheatsheets }) => {
-  const title = "Zolaboo's CheatSheet";
-  const description = 'Misc cheatsheet for various stuff, please dont use this, its not intended to be good';
+  const title = 'Cheatsheet';
+  const description =
+    'Cheatsheet for personal use, no success guaruanteed, you might be better off using  other sources';
 
   return (
     <CheatSheetContainer maxW="90em">
+      <div
+        style={{
+          maxWidth: '70em',
+          margin: '0 auto',
+
+          marginTop: '20px',
+          marginBottom: '50px',
+        }}
+      >
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </div>
       <Head title={title} description={description} />
       <Grid>
         {cheatsheets.map((cheatsheet) => (
