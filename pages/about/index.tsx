@@ -31,7 +31,7 @@ export const IndexPage: FunctionComponent<any> = (props) => {
               marginBottom: '20px',
             }}
           >
-            <img alt="" fill className="logo" src="/logo-second.jpeg" />
+            <img alt="" className="logo" src="/logo-second.jpeg" />
           </div>
           <p style={{ marginBottom: '20px' }}>
             I am a full-stack developer with eight years of experience and a strong enthusiasm for cybersecurity. As a
