@@ -45,6 +45,9 @@ export const IndexPage: FunctionComponent<any> = (props) => {
           <p>
             <a href="https://www.linkedin.com/in/joonas-mustonen-a82921107/">LinkedIn profile</a>
           </p>
+          <p>
+            Contact me via email: <a href="mailto:mustjoon@gmail.com">mustjoon@gmail.com</a>
+          </p>
         </div>
       </Grid>
     </CheatSheetContainer>
