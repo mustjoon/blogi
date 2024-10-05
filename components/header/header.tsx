@@ -14,8 +14,8 @@ const HEADER_ITEMS: HeaderItem[] = [
     link: '/about',
   },
   {
-    text: 'Blog',
-    link: '/blog',
+    text: 'Writeups',
+    link: '/writeups',
   },
   {
     text: 'Cheatsheet',
